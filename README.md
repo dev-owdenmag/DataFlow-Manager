@@ -1,5 +1,4 @@
-# Dynamic Data Management System
-
+# DataFlow Manager
 A versatile web application designed for collecting, managing, and presenting data. The system features a dynamic dashboard, integrated printing functionality, and flexible data management capabilities.
 
 ## Features
