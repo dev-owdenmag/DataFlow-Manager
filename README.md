@@ -14,3 +14,5 @@ A versatile web application designed for collecting, managing, and presenting da
    ```bash
    git clone https://github.com/dev-owdenmag/DataFlow-Manager
    cd DataFlow-Manager
+
+![License](https://img.shields.io/github/license/dev-owdenmag/DataFlow-Manager)
