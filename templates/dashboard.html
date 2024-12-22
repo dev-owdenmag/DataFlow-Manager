@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(90deg, #ff0000, #000000);
+            color: #ffffff;
+            height: 100vh;
+        }
+        .welcome-text {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .dashboard-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        table th {
+            background: rgba(255, 0, 0, 0.5);
+            color: #ffffff;
+            font-weight: bold;
+        }
+        table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #ff4d4d, #ff0000);
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        .logout-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #ff4d4d, #ff0000);
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        .button:hover {
+            background: linear-gradient(90deg, #ff0000, #ff4d4d);
+        }
+        .logout-button:hover {
+            background: linear-gradient(90deg, #4400ff, #ff4d4d);
+        }
+        .delete-button {
+            display: inline-block;
+            padding: 8px 15px;
+            background: linear-gradient(90deg, #ff4d4d, #ff0000);
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+        .delete-button:hover {
+            background: linear-gradient(90deg, #ff0000, #ff4d4d);
+        }
+        form {
+            display: inline;
+            margin: 0;
+        }
+    
+      /* Print-specific styles */
+@media print {
+    header, .print-button, .logout-button {
+        display: none;
+    }
+
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    table {
+        border: 2px solid black;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    th, td {
+        font-size: 14px;
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* Add a black border row after the headers */
+    thead th {
+        border-bottom: 3px solid black;
+    }
+
+    /* Remove the actions column during printing */
+    .actions-column, td.actions {
+        display: none;
+    }
+}
+    </style>
+    
+</head>
+<body>
+    <!-- Welcome Section -->
+    <div class="welcome-text">
+        Welcome Back, {{ admin_name }}
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <h2>Data Entry</h2>
+        <table id="client-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th class="actions-column">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                <tr>
+                    <td>{{ client[0] }}</td>
+                    <td>{{ client[1] }}</td>
+                    <td>{{ client[2] }}</td>
+                    <td>{{ client[3] }}</td>
+                    <td class="actions">
+                        <button onclick="deleteEntry({{ client[0] }})" class="delete-button">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>            
+        </table>        
+        <div class="button-container">
+            <button class="button" onclick="window.print()">Print</button>
+        <a href="/logout" class="logout-button">Logout</a>
+        </div>
+        <script>
+            function deleteEntry(clientId) {
+                fetch(`/delete/${clientId}`, {
+                    method: 'POST'
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error deleting entry.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        alert(data.message);
+                        location.reload(); // Refresh the page to reflect the updated details
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Error deleting entry. Please try again.');
+                });
+            }
+        </script>
+        
+    </body>
+</html>
