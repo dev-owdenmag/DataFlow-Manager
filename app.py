@@ -120,7 +120,7 @@ def delete(client_id):
             cursor.execute("UPDATE clients SET id = ? WHERE id = ?", (idx, row[0]))
             conn.commit()
 
-        return jsonify({'message': 'Entry deleted and IDs reset successfully.'})
+        return jsonify({'message': 'Entry deleted successfully.'})
 
     except sqlite3.Error as e:
         print(f"SQLite error: {e}")

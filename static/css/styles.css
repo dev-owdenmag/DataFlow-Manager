@@ -1,0 +1,103 @@
+ /* General body styling */
+ body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff0000, #000000);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Blurred background effect */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    z-index: -1;
+}
+
+/* Centered form container */
+.form-container {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 20px 30px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+/* Heading styling */
+.form-container h1 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Input field styling */
+.form-container label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.form-container input::placeholder {
+    color: #dddddd;
+}
+
+.form-container input:focus {
+    outline: none;
+    border: 1px solid #ff0000;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Submit button styling */
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background: linear-gradient(90deg, #ff0000, #ff4d4d);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.form-container button:hover {
+    background: linear-gradient(90deg, #ff4d4d, #ff0000);
+}
+
+.admin-login {
+    padding-top: 10px;
+    color: white
+}
+
+.admin-login href{
+    text-decoration: underline;
+    color: blue
+}

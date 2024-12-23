@@ -1,0 +1,87 @@
+/* General body styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #ff0000, #000000);
+    animation: gradientAnimation 6s infinite alternate;
+}
+
+/* Animated gradient background */
+@keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(90deg, #ff0000, #000000);
+    }
+    100% {
+        background: linear-gradient(90deg, #000000, #ff0000);
+    }
+}
+
+/* Login container */
+.login-container {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* Welcome text */
+.welcome-text {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Input field styling */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid rgba(255, 255, 255, 0.541);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.705);
+    font-size: 14px;
+    color: #ffffff;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid #ff0000;
+}
+
+/* Submit button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(90deg, #ff0000, #ff4d4d);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ff4d4d, #ff0000);
+}
+
+.user-page {
+    padding-top: 10px;
+    color: white
+}
+
+.user-page href{
+    text-decoration: underline;
+    color: blue
+}
