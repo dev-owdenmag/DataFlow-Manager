@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for, session, flash
 import sqlite3
+import os
+
 
 app = Flask(__name__)
 app.secret_key = "a1ac66107551bf930811b6ea52ed381a51dadefc424fd6e8"  # Replace with a secure random key
@@ -164,4 +166,4 @@ def reset_ids():
 
 if __name__ == "__main__":
     init_db()
-    app.run(host="0.0.0.0, port=8080")
+    app.run(host="0.0.0.0", debug=False)
